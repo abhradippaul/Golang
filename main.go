@@ -1,10 +1,79 @@
 package main
 
-import (
-	"fmt"
-	// "reflect"
-	// "strconv"
-)
+// "reflect"
+// "strconv"
+
+func addNumbers(a int, b int) int {
+	return a + b
+}
+
+func operation(a int, b int) (sum int, diff int) {
+	sum = a + b
+	diff = a - b
+	return
+}
+
+// func operation(a int, b int) (int, int) {
+// 	sum := a + b
+// 	diff := a - b
+// 	return sum, diff
+// }
+
+func sumNumbers(numbers ...int) int {
+	result := 0
+	for _, element := range numbers {
+		result += element
+	}
+	return result
+}
+
+func factorial(n int) int {
+	if n == 1 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+
+type shape interface {
+	area() float64
+	perimeter() float64
+}
+
+type square struct {
+	side float64
+}
+
+func (s square) area() float64 {
+	return s.side * s.side
+}
+
+func (s square) perimeter() float64 {
+	return 4 * s.side
+}
+
+type Student struct {
+	name   string
+	rollNo int
+	marks  []int
+	grades map[string]int
+}
+
+type Circle struct {
+	x      int
+	y      int
+	radius float64
+	area   float64
+}
+
+func calcArea(c *Circle) {
+	const PI float64 = 3.14
+	area := (PI * c.radius * c.radius)
+	(*c).area = area
+}
+
+func (c *Circle) calArea() {
+	c.area = 3.14 * c.radius * c.radius
+}
 
 func main() {
 	// var first_name, last_name string = "Abhradip", "Paul"
@@ -42,9 +111,37 @@ func main() {
 	// 	fmt.Println(index, "=>", element)
 	// }
 	// fmt.Println(len(fruits))
-	fmt.Println("Sum of two number is", addNumbers(1, 1))
-}
-
-func addNumbers(a int, b int) int {
-	return a + b
+	// fmt.Println("Sum of two number is", addNumbers(1, 1))
+	// sum, diff := operation(7, 3)
+	// fmt.Println(sum, diff)
+	// fmt.Println("Sum of numbers:", sumNumbers(1, 2, 3, 4))
+	// fmt.Println("Factorial of 5 is", factorial(5))
+	// ana := func(a int, b int) int {
+	// 	return a * b
+	// }
+	// fmt.Printf("%T \n", ana)
+	// fmt.Println(ana(20, 30))
+	// ana := func(a int, b int) int {
+	// 	return a * b
+	// }(20, 30)
+	// fmt.Printf("%T \n", ana)
+	// fmt.Println(ana)
+	// i := 10
+	// str := "Hello"
+	// var ptr_i *int = &i
+	// var s = &str
+	// ptr_s := &str
+	// fmt.Println(ptr_i)
+	// fmt.Println(s)
+	// fmt.Println(ptr_s)
+	// 	fmt.Println("Hello")
+	// 	st := Student{
+	// 		name:   "Abhradip Paul",
+	// 		rollNo: 21,
+	// 	}
+	// 	fmt.Printf("%+v \n", st)
+	// 	c := Circle{x: 5, y: 5, radius: 5, area: 0}
+	// 	fmt.Printf("%+v", c)
+	// 	calcArea(&c)
+	// 	fmt.Printf("%+v", c)
 }
