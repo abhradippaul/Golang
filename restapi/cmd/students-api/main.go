@@ -12,15 +12,14 @@ import (
 	"time"
 
 	"example.com/restapi/internal/config"
+	"example.com/restapi/internal/http/handlers/student"
 )
 
 func main() {
 	cfg := config.MustLoad()
 	router := http.NewServeMux()
 
-	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Welcome to students api"))
-	})
+	router.HandleFunc("GET /api/students", student.New())
 
 	server := http.Server{
 		Addr:    cfg.Addr,
